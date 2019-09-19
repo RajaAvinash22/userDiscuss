@@ -10,7 +10,7 @@ export class RegisterService {
   constructor(private _http: HttpClient) { }
 
   register(userData){
-    event.preventDefault()
+    
     return this._http.post<any>(this._url, userData);
   }
 }

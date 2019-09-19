@@ -1,7 +1,7 @@
 <div class="container">
     <div class="container-fluid">
         <h3>Registration Form</h3>
-        <form [formGroup]="register" (ngSubmit)="onSubmit()">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label>User-Name</label>
                 <input formControlName="username" type="text" class="form-control">
@@ -72,5 +72,6 @@
         </form>
 
 
-    </div>{{ register.value | json}}
+    </div>
+    <!-- {{ registerForm.value | json}} -->
 </div>

@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit 
 {
 
- register: FormGroup;
+ registerForm: FormGroup;
 
   // loadApiData() {
   //   this.register.patchValue({
@@ -26,46 +26,48 @@ export class SignUpComponent implements OnInit
 
   onSubmit()
   {
-    console.log(this.register.value);
-    this._registerService.register(this.register.value)
+     console.log(this.registerForm.value);
+    this._registerService.register(this.registerForm.value)
     .subscribe(
       response => {
-          if(response.error)
+          if(response.success)
           { 
-            console.log('Error!',response.error);
-            
-            this.router.navigate(['/sign-up'])
+            console.log('Success!', response.success );
+            this.router.navigate(['/login'])
+           
           } else
           {
-            console.log('Success!', response.success );
-            this.router.navigate(['/home']);
+            console.log('Error!',response.error);
+            this.router.navigate(['/sign-up'])
           } 
        
         },
     );
 
-    localStorage.setItem("email",this.register.value.email);
-    localStorage.setItem("password",this.register.value.password);
+    localStorage.setItem("user",JSON.stringify(this.registerForm.value));
+      
+    // localStorage.setItem("email",this.registerForm.value.email);
+    // localStorage.setItem("password",this.registerForm.value.password);
   }
   
 
   get lastname() {
-    let t = this.register.get('lastname');
+    let t = this.registerForm.get('lastname');
     
     return t;
   }
   get firstname() {
-    let t = this.register.get('firstname');
+    let t = this.registerForm.get('firstname');
     
     return t;
   }
   get password() {
-    let t = this.register.get('password');
+    let t = this.registerForm.get('password');
     
     return t;
   }
   get email() {
-    let t = this.register.get('email');
+    let t = this.registerForm.get('email');
     
     return t;
   }
@@ -80,12 +82,12 @@ export class SignUpComponent implements OnInit
   //   return t;
   //  }
    reset() {
-    let t = this.register.reset();
+    let t = this.registerForm.reset();
     return t;
   }
 
   ngOnInit() {
-    this.register = this.fb.group({
+    this.registerForm = this.fb.group({
       username: ['',],
       password: ['',[Validators.required, Validators.minLength(6), ForbiddenNameValidator(/password/)]],
       email: ['',[Validators.required,
