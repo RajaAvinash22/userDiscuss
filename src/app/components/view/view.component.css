@@ -1,0 +1,30 @@
+
+.demoform{
+    display:block;
+}
+.img-view
+{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+.img-view img{
+    width: 100%;
+}
+.text-view
+{
+    padding: 10px;
+    display: inline-block;
+
+}
+.text-view input,button
+{
+    padding: 10px;
+}
+hr
+{
+     border-style:  solid;
+     border-width: 1px;
+     border-color:red;
+
+}

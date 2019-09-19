@@ -1,0 +1,20 @@
+@import '~bootstrap/dist/css/bootstrap.min.css'; 
+.container
+{
+     margin:0;
+     padding:0;
+     height: 520px;
+     width: 500px;
+     border-style: solid;
+     border-width: 5px;
+     border-color:rgb(0, 195, 255);
+}
+
+.ng-valid,
+.ng-valid.required {
+  background-color: lightgreen;
+}
+
+.ng-invalid:not(form) {
+  background-color: lightcoral;
+}
