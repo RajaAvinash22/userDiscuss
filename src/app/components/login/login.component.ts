@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   loginvalue: ILogin[];
 
   onSubmit() {
-    // console.log(this.loginForm.value);
+     console.log(this.loginForm.value);
     this.x = this.loginvalue.filter((data) => (this.loginForm.value.email == data.email && this.loginForm.value.password == data.password
     ))
 
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
     });
 
     this._loginService.getLoginData()
-      .subscribe(data => { this.loginvalue = data; console.log(this.loginvalue); });
+      .subscribe(data => { this.loginvalue = data ; console.log(this.loginvalue); });
 
   }
 

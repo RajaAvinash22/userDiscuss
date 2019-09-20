@@ -28,3 +28,19 @@ hr
      border-color:red;
 
 }
+.email
+{
+   color: deepskyblue;
+}
+.date
+{
+    color: dimgray;
+}
+.description
+{
+    line-height: 26pt;
+}
+#disccus
+{
+    color: crimson;
+}

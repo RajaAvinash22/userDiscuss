@@ -9,11 +9,22 @@
     <div class="text-view">
             <input type="text" placeholder=" Leave a message..."/>
             <button  type="button"> POST!</button>
-            <!-- <button  (click)="logout()" type="button"> LOG-OUT</button>  -->
+             <button [disabled]="clicked"  (click)="logout();clicked = true;" type="button"> LOG-OUT</button>  
     </div>
     
 
     <hr>
+
+    <div *ngFor = "let data of commentsvalue" >
+       
+       <span class="email "> {{data.email}}</span> . <span class=" date"> {{data.created_date | timeAgo}}</span>
+        <div class="description">
+                <p id="comment">{{data.description}}</p>
+
+        </div>
+        
+    
+    </div>
 </div>
     
 </div>
