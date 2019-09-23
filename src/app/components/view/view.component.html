@@ -1,30 +1,32 @@
 <div class="container">
-    <div class ="header">
+    <div class="header">
         <h5> Welcome {{loginUser.firstname}}</h5>
     </div>
-<div class="demoform">
-    <div class="img-view">
-      <img [src]= "img" alt="Pic">
-    </div>
-    <div class="text-view">
-            <input type="text" placeholder=" Leave a message..."/>
-            <button  type="button"> POST!</button>
-             <button [disabled]="clicked"  (click)="logout();clicked = true;" type="button"> LOG-OUT</button>  
-    </div>
-    
+    <div class="demoform">
+        <div class="img-view">
+            <img [src]="img" alt="Pic">
+        </div>
+        <div class="text-view">
+            <input type="text" [(ngModel)]="myComment" #message name="message" placeholder=" Leave a message..." />
+            <button (click)="post()" [disabled]="postDisable" type="button">Post</button>
+            <button  (click)="message.value = ''"type="button"> Clear</button>
+            <button [disabled]="clicked" (click)="logout();clicked = true;" type="button"> Logout</button>
+            
+        </div>
 
-    <hr>
 
-    <div *ngFor = "let data of commentsvalue" >
-       
-       <span class="email "> {{data.email}}</span> . <span class=" date"> {{data.created_date | timeAgo}}</span>
-        <div class="description">
+        <hr>
+
+        <div *ngFor="let data of commentsvalue">
+
+            <span class="email "> {{data.email}}</span> . <span class=" date"> {{data.created_date | timeAgo}}</span>
+            <div class="description">
                 <p id="comment">{{data.description}}</p>
 
+            </div>
+
+
         </div>
-        
-    
     </div>
-</div>
-    
+
 </div>

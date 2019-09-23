@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './../../shared/register.service';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
@@ -10,10 +9,9 @@ import { Router } from '@angular/router';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit 
-{
-
- registerForm: FormGroup;
+export class SignUpComponent implements OnInit {
+  x = [];
+  registerForm: FormGroup;
 
   // loadApiData() {
   //   this.register.patchValue({
@@ -22,58 +20,56 @@ export class SignUpComponent implements OnInit
 
   //   });
   // }
-  constructor ( private router: Router, private fb: FormBuilder, private _registerService: RegisterService) { }
+  constructor(private router: Router, private fb: FormBuilder, private _registerService: RegisterService) { }
 
-  onSubmit()
-  {
-     console.log(this.registerForm.value);
+  onSubmit() {
+    //  console.log(this.registerForm.value);
     this._registerService.register(this.registerForm.value)
-    .subscribe(
-      response => {
-          if(response.success)
-          { 
-            console.log('Success!', response.success );
-            this.router.navigate(['/login'])
-           
-          } else
-          {
-            console.log('Error!',response.error);
-            this.router.navigate(['/sign-up'])
-          } 
-       
-        },
-    );
+      .subscribe(
+        response => {
+          if (response.success) {
+            console.log('Success!', response.success);
+            this.router.navigate(['/home'])
 
-    localStorage.setItem("user",JSON.stringify(this.registerForm.value));
-      
+          } else {
+            console.log('Error!', response.error);
+            this.router.navigate(['/sign-up'])
+          }
+
+        },
+      );
+
+
+    localStorage.setItem("user", JSON.stringify(this.registerForm.value));
+
     // localStorage.setItem("email",this.registerForm.value.email);
     // localStorage.setItem("password",this.registerForm.value.password);
   }
-  
+
 
   get lastname() {
     let t = this.registerForm.get('lastname');
-    
+
     return t;
   }
   get firstname() {
     let t = this.registerForm.get('firstname');
-    
+
     return t;
   }
   get password() {
     let t = this.registerForm.get('password');
-    
+
     return t;
   }
   get email() {
     let t = this.registerForm.get('email');
-    
+
     return t;
   }
   // get alternateEmails() {
   //   let t = this.register.get('alternateEmails') as FormArray;
-    
+
   //   return t;
   // }
   //  addAlternateEmail()
@@ -81,22 +77,22 @@ export class SignUpComponent implements OnInit
   //   let t = this.alternateEmails.push(this.fb.control(''));
   //   return t;
   //  }
-   reset() {
+  reset() {
     let t = this.registerForm.reset();
     return t;
   }
 
-  ngOnInit() {
+  signup() {
     this.registerForm = this.fb.group({
       username: ['',],
-      password: ['',[Validators.required, Validators.minLength(6), ForbiddenNameValidator(/password/)]],
-      email: ['',[Validators.required,
-               Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-             ]],
+      password: ['', [Validators.required, Validators.minLength(6), ForbiddenNameValidator(/password/)]],
+      email: ['', [Validators.required,
+      Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ]],
       // subscribe: [false],
       // fullName: this.fb.group({
-        firstname: ['',[Validators.required, Validators.minLength(6),Validators.maxLength(12)]],
-        lastname: ['',[Validators.required, Validators.minLength(6),Validators.maxLength(12)]],
+      firstname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
+      lastname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
       // }),
       // alternateEmails: this.fb.array([])
     });
@@ -115,6 +111,11 @@ export class SignUpComponent implements OnInit
     //   }
     //   email.updateValueAndValidity();
     // })
+  }
+
+  ngOnInit() {
+
+    this.signup();
   }
 
 }

@@ -1,8 +1,8 @@
 
 export class IShowComments
 {
-    created_date :Date;
-    email : string;
+    
+    email: string;
     description: string;
     discussion_id: number;
 }

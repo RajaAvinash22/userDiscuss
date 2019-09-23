@@ -13,6 +13,8 @@ import {  HttpClientModule } from '@angular/common/http';
 import { RegisterService } from './shared/register.service';
 import { AuthGuard } from './guards/auth.guard'; 
 import {TimeAgoPipe} from 'time-ago-pipe';
+import { PostcommentsService } from './shared/postcomments.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,10 +31,12 @@ import {TimeAgoPipe} from 'time-ago-pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule
+   
     
     
   ],
-  providers: [LoginService,RegisterService,AuthGuard,ShowcommentsService],
+  providers: [LoginService,RegisterService,AuthGuard,ShowcommentsService,PostcommentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,14 +12,17 @@ import { AuthService } from '../../shared/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   x;
   loginForm: FormGroup;
+
   constructor(private router: Router, private fb: FormBuilder, private _loginService: LoginService, private authService: AuthService) { }
 
   loginvalue: ILogin[];
 
+  //On Login Button Clicked
   onSubmit() {
-     console.log(this.loginForm.value);
+    //  console.log(this.loginForm.value);
     this.x = this.loginvalue.filter((data) => (this.loginForm.value.email == data.email && this.loginForm.value.password == data.password
     ))
 
@@ -57,8 +60,8 @@ export class LoginComponent implements OnInit {
 
     return t;
   }
-
-  ngOnInit() {
+  //login credentials
+  login() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required,
       Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
@@ -67,8 +70,16 @@ export class LoginComponent implements OnInit {
     });
 
     this._loginService.getLoginData()
-      .subscribe(data => { this.loginvalue = data ; console.log(this.loginvalue); });
+      .subscribe(data => {
+        this.loginvalue = data;
+        // console.log(this.loginvalue); 
+      });
 
   }
 
+
+  ngOnInit() {
+
+    this.login();
+  }
 }
