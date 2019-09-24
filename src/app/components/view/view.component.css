@@ -75,7 +75,7 @@ hr
     color: black;
   }
   
-  .post:hover {
+  .post:hover:enabled {
     background-color: #4CAF50;
     color: white;
   }
@@ -85,7 +85,7 @@ hr
     color: black;
   }
   
-  .logout:hover {
+  .logout:hover:enabled {
     background: #f44336;
     color: white;
   }
@@ -96,7 +96,7 @@ hr
     color: black;
   }
   
-  .clear:hover {
+  .clear:hover:enabled {
     background: #ff9800;
     color: white;
   }
