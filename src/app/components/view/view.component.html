@@ -1,6 +1,6 @@
 <div class="container">
     <div class="header">
-        <h5> Welcome {{loginUser.firstname}}</h5>
+            <span class="tot">{{totalComment}} Comments</span>
     </div>
     <div class="demoform">
         <div class="img-view">
@@ -16,9 +16,10 @@
 
 
         <hr>
-
+        
         <div *ngFor="let data of commentsvalue">
-
+            
+                    
             <span class="email "> {{data.email}}</span> . <span class=" date"> {{data.created_date | timeAgo}}</span>
             <div class="description">
                 <p id="comment">{{data.description}}</p>

@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
       .subscribe(
         response => {
           if (response.success) {
-            console.log('Success!', response.success);
+            console.log('Success!');
             this.router.navigate(['/home'])
 
           } else {
@@ -40,7 +40,10 @@ export class SignUpComponent implements OnInit {
       );
 
 
-    localStorage.setItem("user", JSON.stringify(this.registerForm.value));
+      let x = [];
+       x.push(this.registerForm.value);
+       
+    localStorage.setItem("user", JSON.stringify(x));
 
     // localStorage.setItem("email",this.registerForm.value.email);
     // localStorage.setItem("password",this.registerForm.value.password);

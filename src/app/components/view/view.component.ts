@@ -16,6 +16,7 @@ export class ViewComponent implements OnInit
       loginUser: any;
       clicked = false;
       postcomment;
+      totalComment=null;
       commentsvalue: IShowComments[];
       myComment: string = '';
       postDisable=null;
@@ -26,7 +27,7 @@ export class ViewComponent implements OnInit
   showData(){
     this._showcommentsService.showComments()
     .subscribe(data=>{this.commentsvalue = data; 
-      // console.log(this.commentsvalue);
+       this.totalComment=this.commentsvalue.length;
     });
   
   }
@@ -43,8 +44,8 @@ export class ViewComponent implements OnInit
    //posting of comments from login user
    post()
    {
-  let x= JSON.parse(localStorage.getItem('user'));
-  // console.log(x);
+  //  let x = JSON.parse(localStorage.getItem('user'));
+    // console.log(x.email);
      this.postcomment = {
        email: JSON.parse(localStorage.getItem('user'))[0].email,
        discussion_id: 123,
@@ -54,7 +55,7 @@ export class ViewComponent implements OnInit
      .subscribe(
        data =>{
          this.postcomment=data;
-        //  console.log(this.postcomment);
+         console.log(this.postcomment);
 
        this.showData();
        },
@@ -73,19 +74,20 @@ export class ViewComponent implements OnInit
    }
   
   ngOnInit() {
-    let x = [];
-    x.push(JSON.parse(localStorage.getItem('user')));
-    this.loginUser = x;
+    // let x = [];
+    // x.push(JSON.parse(localStorage.getItem('user')));
+    // this.loginUser = x;
+    // console.log(this.loginUser);
     
-    for(let x of this.loginUser)
-    {
-      this.loginUser = x;
-    }
+    // for(let y of this.loginUser)
+    // {
+    //   this.loginUser = y;
+    // }
 
     // this._showcommentsService.showComments()
     // .subscribe(data=>{this.commentsvalue = data; console.log(this.commentsvalue);});
 
  this.showData();
-
+ 
    }
 }

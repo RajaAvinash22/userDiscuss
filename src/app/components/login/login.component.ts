@@ -36,6 +36,9 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("user", JSON.stringify(this.x));
       console.log("Login successful");
       this.router.navigateByUrl('/home');
+    }else{
+      console.log("Login Failed");
+      alert("Invalid Username or Password ");
     }
 
     // localStorage.setItem("email",x);
@@ -72,7 +75,7 @@ export class LoginComponent implements OnInit {
     this._loginService.getLoginData()
       .subscribe(data => {
         this.loginvalue = data;
-        // console.log(this.loginvalue); 
+         console.log(this.loginvalue); 
       });
 
   }
