@@ -55,14 +55,14 @@ export class ViewComponent implements OnInit
      .subscribe(
        data =>{
          this.postcomment=data;
-         console.log(this.postcomment);
+        //  console.log(this.postcomment);
 
        this.showData();
        },
       response =>{
         if(response.success)
         {
-          console.log('Success!', this.postcomment);
+          console.log('Success!');
         }
         else
         {
@@ -74,15 +74,14 @@ export class ViewComponent implements OnInit
    }
   
   ngOnInit() {
-    // let x = [];
-    // x.push(JSON.parse(localStorage.getItem('user')));
-    // this.loginUser = x;
-    // console.log(this.loginUser);
+    let x = (JSON.parse(localStorage.getItem('user')));
+    this.loginUser = x;
+    //console.log(this.loginUser);
     
-    // for(let y of this.loginUser)
-    // {
-    //   this.loginUser = y;
-    // }
+    for(let y of this.loginUser)
+    {
+      this.loginUser = y;
+    }
 
     // this._showcommentsService.showComments()
     // .subscribe(data=>{this.commentsvalue = data; console.log(this.commentsvalue);});

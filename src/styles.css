@@ -1,4 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.min.css'; 
+
 .container
 {
      margin: 0px;
@@ -18,4 +19,8 @@
 
 .ng-invalid:not(form) {
   background-color: lightcoral;
+}
+.btn
+{
+    border-radius: 5px;
 }

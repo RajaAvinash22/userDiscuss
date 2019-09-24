@@ -14,13 +14,25 @@
 .text-view
 {
     padding: 10px;
+    
     display: inline-block;
 
 }
+.fname
+{
+    
+    font-family: 'B612 Mono';
+    font-size: 22px;
+    font-weight: normal
+}
 .tot
 {
+    font-family:'Major Mono Display';
+    font-size: 18px;
+    font-weight: bold;
     color:red;
 }
+
 .text-view input,button
 {
     padding: 10px;
@@ -48,3 +60,43 @@ hr
 {
     color: crimson;
 }
+
+  .btn {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 5px ;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .post {
+    
+    border-color: #4CAF50;
+    color: black;
+  }
+  
+  .post:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .logout {
+    
+    border-color: #f44336;
+    color: black;
+  }
+  
+  .logout:hover {
+    background: #f44336;
+    color: white;
+  }
+  
+  .clear {
+    
+    border-color: #ff9800;
+    color: black;
+  }
+  
+  .clear:hover {
+    background: #ff9800;
+    color: white;
+  }
