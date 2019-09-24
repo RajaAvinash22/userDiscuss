@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
     this._loginService.getLoginData()
       .subscribe(data => {
         this.loginvalue = data;
-         console.log(this.loginvalue); 
+        //  console.log(this.loginvalue); 
       });
 
   }
