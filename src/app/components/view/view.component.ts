@@ -28,9 +28,11 @@ export class ViewComponent implements OnInit
     this._showcommentsService.showComments()
     .subscribe(data=>{this.commentsvalue = data; 
        this.totalComment=this.commentsvalue.length;
+      //  console.log(this.commentsvalue);
     });
-  
+    
   }
+      
 //log-out function
    logout()
    {
