@@ -1,21 +1,31 @@
 
 .demoform{
     display:block;
+    margin-top: 5px;
+}
+.demoform2{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 .img-view
 {
     width: 50px;
     height: 50px;
-    display: inline-block;
 }
 .img-view img{
     width: 100%;
 }
-.text-view
+.text-view{
+  margin-left:5px;
+}
+.buttons
 {
-    padding: 10px;
-    
-    display: inline-block;
+  margin-top: 5px;
+}
+.demoform2 .text-view input
+{
+    min-width: 350px;    
 
 }
 .fname
@@ -23,7 +33,8 @@
     
     font-family: 'B612 Mono';
     font-size: 22px;
-    font-weight: normal
+    font-weight: normal;
+    min-width: 350px;
 }
 .tot
 {
