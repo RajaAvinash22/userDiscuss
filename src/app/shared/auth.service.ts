@@ -14,10 +14,15 @@ isLoggedIn = new BehaviorSubject(false)
 
   constructor() { }
 
-  checkLoggedIn(){
-    if(JSON.parse(localStorage.getItem('user'))) {
-       this.isLoggedIn.next(true)
-       return this.isLoggedIn
+  checkLoggedIn(val?){
+    if(val == undefined){
+        if(JSON.parse(localStorage.getItem('user'))) {
+            this.isLoggedIn.next(true)
+          return this.isLoggedIn
+        }
+    }else {
+      this.isLoggedIn.next(val)
+      return this.isLoggedIn
     }
   }
 

@@ -45,7 +45,7 @@ export class ViewComponent implements OnInit {
     this.postDisable = true;
     this.loginUser = "";
     localStorage.removeItem('user');
-    this.auth.isLoggedIn.next(false)
+    this.auth.checkLoggedIn(false)
     console.log("Log-out ");
   }
 

@@ -16,8 +16,13 @@ export class AppComponent {
 
   ngOnInit() {
 
-    this.auth.checkLoggedIn().subscribe(
+    if(JSON.parse(localStorage.getItem('user'))){
+      this.auth.isLoggedIn.next(true)
+    }
+
+    this.auth.isLoggedIn.subscribe(
       res=>{
+       
         this.isLoggedIn = res
       }
     )
