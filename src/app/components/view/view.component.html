@@ -24,8 +24,6 @@
         <hr>
         <span class="tot">{{totalComment}}Comments </span>
         <div *ngFor="let data of commentsvalue">
-
-
             <span class="email "> {{data.email}}</span> . <span class=" date"> {{data.created_date | timeAgo}}</span>
             <div class="description">
                 <p id="comment">{{data.description}}</p>

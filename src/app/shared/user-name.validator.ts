@@ -1,4 +1,3 @@
-
 import { AbstractControl, ValidatorFn } from '@angular/forms'
 
 export function ForbiddenNameValidator(forbiddenName: RegExp): ValidatorFn{

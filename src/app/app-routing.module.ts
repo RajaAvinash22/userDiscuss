@@ -32,4 +32,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [LoginComponent, SignUpComponent, ViewComponent]
+export const routingComponents = [ LoginComponent, SignUpComponent, ViewComponent ]
