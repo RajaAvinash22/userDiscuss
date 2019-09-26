@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IShowComments } from 'src/app/shared/showcomments';
 import { PostcommentsService } from 'src/app/shared/postcomments.service';
+import { AuthService } from 'src/app/shared/auth.service';
+
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
@@ -21,13 +23,15 @@ export class ViewComponent implements OnInit {
 
   constructor(private router: Router,
     private _showcommentsService: ShowcommentsService,
-    private _postcommentsService: PostcommentsService) { }
+    private _postcommentsService: PostcommentsService,
+    private auth: AuthService
+    ) { }
 
   //getter of comments function
   showData() {
     this._showcommentsService.showComments()
       .subscribe(data => {
-        this.commentsvalue = data;
+        this.commentsvalue = data.reverse();
         this.totalComment = this.commentsvalue.length;
         // console.log(this.commentsvalue);
 
@@ -41,6 +45,7 @@ export class ViewComponent implements OnInit {
     this.postDisable = true;
     this.loginUser = "";
     localStorage.removeItem('user');
+    this.auth.isLoggedIn.next(false)
     console.log("Log-out ");
   }
 
@@ -75,13 +80,13 @@ export class ViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    let x = (JSON.parse(localStorage.getItem('user')));
-    this.loginUser = x;
-    //console.log(this.loginUser);
+    // let x = (JSON.parse(localStorage.getItem('user')));
+    // this.loginUser = x;
+    // //console.log(this.loginUser);
 
-    for (let y of this.loginUser) {
-      this.loginUser = y;
-    }
+    // for (let y of this.loginUser) {
+    //   this.loginUser = y;
+    // }
 
     // this._showcommentsService.showComments()
     // .subscribe(data=>{this.commentsvalue = data; console.log(this.commentsvalue);});
