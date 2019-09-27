@@ -7,13 +7,24 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-x;
-y;
+
+
+
 
 isLoggedIn = new BehaviorSubject(false)
+isLoggedout = new BehaviorSubject('');
 
-  constructor() { }
 
+  constructor() {
+    let x = JSON.parse(localStorage.getItem('user'));
+    this.isLoggedout.next(x);
+   
+   }
+
+setUser(data){
+  this.isLoggedout.next(data);
+}
+ 
   checkLoggedIn(val?){
     if(val == undefined){
         if(JSON.parse(localStorage.getItem('user'))) {

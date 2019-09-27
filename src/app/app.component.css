@@ -1,12 +1,11 @@
 /* AppComponent's private CSS styles */
   h2 {
-    margin-left: 20px;
-    margin-bottom: 0px;
-    margin-top: 0px;
+    text-align-last: center;
     padding-top: 0px;
   }
   nav
   {
+    margin: 0 auto;
     width: 500px;
     background-color: #eee;
   }

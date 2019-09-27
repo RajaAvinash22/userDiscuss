@@ -8,11 +8,25 @@ import { AuthService } from './shared/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  status = false;
   title = 'userDiscuss';
+  postDisable = null;
+  loginUser;
 
   isLoggedIn: boolean 
 
   constructor(private auth: AuthService) {}
+
+  logout() {
+    this.postDisable = true;
+    this.loginUser = [''];
+    localStorage.removeItem('user');
+    this.auth.checkLoggedIn(false)
+    console.log("Log-out ");
+    this.status = true;
+    this.auth.setUser(this.loginUser);
+
+  }
 
   ngOnInit() {
 
@@ -26,6 +40,6 @@ export class AppComponent {
         this.isLoggedIn = res
       }
     )
-    console.log(this.isLoggedIn)
+    
   }
 }

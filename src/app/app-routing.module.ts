@@ -19,7 +19,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'home', component: ViewComponent, canActivate: [AuthGuard]
+    path: 'home', component: ViewComponent, 
 
   },
   {

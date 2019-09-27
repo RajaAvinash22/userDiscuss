@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/shared/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './../../shared/register.service';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
@@ -20,14 +21,19 @@ export class SignUpComponent implements OnInit {
 
   //   });
   // }
-  constructor(private router: Router, private fb: FormBuilder, private _registerService: RegisterService) { }
+  constructor(private router: Router,
+     private fb: FormBuilder, 
+     private _registerService: RegisterService,
+     private auth:AuthService) { }
 
   onSubmit() {
     //  console.log(this.registerForm.value);
+    this.auth.checkLoggedIn(false)
     this._registerService.register(this.registerForm.value)
       .subscribe(
         response => {
           if (response.success) {
+            this.auth.checkLoggedIn(true)
             console.log('Success!');
             this.router.navigate(['/home'])
 

@@ -1,9 +1,10 @@
 import { ShowcommentsService } from './../../shared/showcomments.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { IShowComments } from 'src/app/shared/showcomments';
 import { PostcommentsService } from 'src/app/shared/postcomments.service';
 import { AuthService } from 'src/app/shared/auth.service';
+import { identifierModuleUrl, collectExternalReferences } from '@angular/compiler';
 
 @Component({
   selector: 'app-view',
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/shared/auth.service';
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
-
+  isLoggedIn: boolean
   public img = "./assets/images/images.png";
   loginUser: any;
   clicked = false;
@@ -21,11 +22,12 @@ export class ViewComponent implements OnInit {
   myComment: string = '';
   postDisable = null;
 
+
   constructor(private router: Router,
     private _showcommentsService: ShowcommentsService,
     private _postcommentsService: PostcommentsService,
-    private auth: AuthService
-    ) { }
+    private auth: AuthService,
+  ) {}
 
   //getter of comments function
   showData() {
@@ -40,14 +42,16 @@ export class ViewComponent implements OnInit {
   }
 
 
-  //log-out function
-  logout() {
-    this.postDisable = true;
-    this.loginUser = "";
-    localStorage.removeItem('user');
-    this.auth.checkLoggedIn(false)
-    console.log("Log-out ");
-  }
+  // log-out function
+  // logout() {
+  //   this.postDisable = true;
+  //   this.loginUser = "";
+  //   localStorage.removeItem('user');
+  //   this.auth.checkLoggedIn(false)
+  //   console.log("Log-out ");
+
+  //   this.loginUser = true;
+  // }
 
 
   //posting of comments from login user
@@ -80,7 +84,32 @@ export class ViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    // let x = (JSON.parse(localStorage.getItem('user')));
+
+    this.auth.isLoggedIn.subscribe(
+      res => {
+
+        this.isLoggedIn = res;
+      
+
+      }
+     
+    )
+    this.auth.isLoggedout.subscribe(
+      (res) => { this.loginUser = res}
+    )
+
+
+
+
+    let z = JSON.parse(localStorage.getItem('user'));
+    console.log(z);
+    if (z) {
+      if (z.length !== 0) {
+        this.loginUser = z;
+
+
+      }
+    }
     // this.loginUser = x;
     // //console.log(this.loginUser);
 
@@ -88,10 +117,11 @@ export class ViewComponent implements OnInit {
     //   this.loginUser = y;
     // }
 
-    // this._showcommentsService.showComments()
-    // .subscribe(data=>{this.commentsvalue = data; console.log(this.commentsvalue);});
+
 
     this.showData();
 
   }
+
+ 
 }

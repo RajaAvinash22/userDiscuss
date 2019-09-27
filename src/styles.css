@@ -1,8 +1,11 @@
 @import '~bootstrap/dist/css/bootstrap.min.css'; 
-
+.main{
+  margin: auto;
+  width: 100%;
+}
 .container
 {
-     margin: 0px;
+     margin: 0 auto;
      padding:10px;
      height: 520px;
      width: 500px;
