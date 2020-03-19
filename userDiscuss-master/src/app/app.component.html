@@ -1,0 +1,12 @@
+
+  <h2>{{title}}</h2>
+<nav >
+    <a  routerLink="/home" routerLinkActive="active">HOME</a>
+    <a *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="active">LOG-IN</a>
+    <a *ngIf="!isLoggedIn" routerLink="/sign-up" routerLinkActive="active">SIGN-UP</a>
+    <a *ngIf="isLoggedIn"  (click)="logout();clicked = true;">LOG OUT</a>
+  </nav>
+
+  <router-outlet></router-outlet>
+
+  

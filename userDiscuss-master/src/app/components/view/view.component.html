@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="header">
+        <span class="fname" *ngFor="let user of loginUser">Welcome {{user.firstname}} </span><br>
+
+    </div>
+    <div class="demoform">
+        <div class="demoform2">
+            <div class="img-view">
+                <img [src]="img" alt="Pic">
+            </div>
+            <div class="text-view">
+                <textarea id="text-area"  type="text" [disabled]="!isLoggedIn" [(ngModel)]="myComment" #message name="message"   placeholder=" Leave a message..." ></textarea><br>
+               <div class="buttons"> 
+                   <button class="btn post" (click)="post();message.value = ''" [disabled]="!isLoggedIn" type="button"><i
+                        class="fa fa-commenting-o" aria-hidden="true"></i> Post</button>
+                <button class="btn clear" [disabled]="!isLoggedIn" (click)="message.value = ''" type="button"><i class="fa fa-eraser"
+                        aria-hidden="true"></i> Clear</button>
+                <!-- <button class="btn logout" [disabled]="clicked" (click)="logout();clicked = true;" type="button"><i
+                        class="fa fa-sign-out" aria-hidden="true"></i> Logout</button> -->
+               </div>
+            </div>
+        </div>
+
+        <hr>
+        <span class="tot">{{totalComment}}Comments </span>
+        <div *ngFor="let data of commentsvalue">
+                <img [src]="img" alt="Pic" width=15px>
+            <span class="email "> {{data.email}}</span> . <span class=" date"> {{data.created_date | timeAgo}}</span>
+            <div class="description">
+                <p id="comment">{{data.description}}</p>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
